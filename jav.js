@@ -18,16 +18,19 @@ function changeImage() {
 
 function addText() {
     const textContainer = document.getElementById('textContainer');
-    const newText = document.createTextNode('This is some new text added dynamically.');
+    const newText = document.createElement('div');
+    newText.className = 'text-item';
+    newText.textContent = 'This is some new text added dynamically.';
     textContainer.appendChild(newText);
 }
 
 function deleteNode() {
-    const imageContainer = document.getElementById('imageContainer');
-    if (imageContainer) {
-        imageContainer.parentNode.removeChild(imageContainer);
+    const textContainer = document.getElementById('textContainer');
+    const textItems = textContainer.getElementsByClassName('text-item');
+    if (textItems.length > 0) {
+        textContainer.removeChild(textItems[textItems.length - 1]);
     } else {
-        console.error('Element with id "imageContainer" not found.');
+        console.error('No text items to delete.');
     }
 }
 
